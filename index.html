@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vulnerable Tabnabbing Test</title>
+  <title>Opener Tab</title>
 </head>
 <body>
-  <h1>Welcome to the Demo</h1>
-  <p>
-    <a href="https://infosecxsalman.github.io/tabnab/vuln.html" target="_blank">
-      Click here to view something interesting!
-    </a>
-  </p>
+  <h1>Click the button to open tabnab</h1>
+  <button onclick="window.open('https://infosecxsalman.github.io/tabnab/vuln.html', '_blank', 'noopener=no')">
+    Open Tabnab (Noopener Disabled)
+  </button>
 </body>
 </html>
