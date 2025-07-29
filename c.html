@@ -1,1 +1,46 @@
-<h1><a href="chrome://settings/resetProfileSettings?origin=userclick">Click</1></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chrome Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+    }
+    .chrome-icon {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+    .reset-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #4285f4;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .reset-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Google_Chrome_icon_%282011%29.png" alt="Chrome Icon" class="chrome-icon">
+    <h1>Reset Chrome Settings</h1>
+    <a class="reset-link" href="chrome://settings/resetProfileSettings?origin=userclick">
+      Click here to reset
+    </a>
+  </div>
+</body>
+</html>
